@@ -1,4 +1,3 @@
-require('dotenv').config();
 const http = require('http'); // brings in http module - https instead of http
 const app = require('./app'); // brings in the app js file - build server using this
 

@@ -1,7 +1,7 @@
 const Pool = require('pg').Pool;
 const connectionString = require('../settings');
 
-const pool = new pool({
+const pool = new Pool({
     connectionString
 });
 

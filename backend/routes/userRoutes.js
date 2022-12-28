@@ -5,7 +5,7 @@ const auth = require('../middleware/auth');
 
 const userCtrl = require('../controllers/userController');
 
-//ROUTES
+// ROUTES
 router.post('/login', userCtrl.login);
 router.post('/signup', userCtrl.signup);
 router.get('/:id', auth, userCtrl.getOneUser);
