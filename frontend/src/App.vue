@@ -1,6 +1,5 @@
 <template>
-  Hello
-  <router-view />
+  <router-view/>
 </template>
 
 
@@ -10,7 +9,6 @@ export default {
   components: {},
 };
 </script>
-
 
 
 <style>
