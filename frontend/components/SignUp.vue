@@ -106,3 +106,48 @@
     }
   }
   </script>
+
+<style scoped>
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+label, input {
+  padding: .5rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: medium;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 6rem 0 0 16rem;
+}
+#signup_btn_2 {
+  font-weight: bold;
+  font-style: normal;
+  cursor: pointer;
+  border-radius: 25px;
+  padding: .5rem;
+  width: 14rem;
+  margin: 4rem 0 0 9.7rem; 
+  font-size: 18px;
+  color: black;
+  border: none;
+  box-shadow: 5px 5px 5px gray;
+  background: linear-gradient(to bottom right, #8521dd, #be5deb); 
+}
+    
+@media screen and (max-width: 768px) {
+  form {
+    width: 90%;
+    margin: 1rem 0 0 1rem;
+  }
+  #signup_btn_2 {
+    margin: 1rem 0 0 3rem;
+    box-shadow: none;
+  }
+}
+</style>
