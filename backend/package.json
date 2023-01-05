@@ -2,24 +2,13 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "pgsql:start": "brew services run postgresql",
     "pgsql:stop": "brew services stop postgresql",
     "start": "nodemon server.js",
     "create": "node ./db.js createTables"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Merebear0990/Project-7-Final.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Merebear0990/Project-7-Final/issues"
-  },
-  "homepage": "https://github.com/Merebear0990/Project-7-Final#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
@@ -32,8 +21,5 @@
     "multer": "^1.4.5-lts.1",
     "password-validator": "^5.3.0",
     "pg": "^8.8.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.20"
   }
 }
