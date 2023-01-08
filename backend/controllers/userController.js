@@ -7,21 +7,21 @@ const emailValidator = require('email-validator');
 
 // SIGNUP
 exports.signup = (req, res, next) => {
-    let validInfo = false;
-    let schema = new passwordValidator()
-        .is().min(8)                                    // Minimum length 8
-        .is().max(15)                                  // Maximum length 15
-        .has().uppercase(1)                              // Must have at least one uppercase letter
-        .has().lowercase(1)                              // Must have at least one lowercase letter
-        .has().digits(1)                              // Must have at least 1 number
-        .has().symbols(1)                               // Must have at least one symbol
-        .has().not().spaces();                         // Should not have spaces
-    if (emailValidator.validate(req.body.email)) {
-        console.log(emailValidator.validate(req.body.email))
-    }
-    if (schema.validate(req.body.password) && emailValidator.validate(req.body.email) === true) {
-        validInfo = true
-    }
+    let validInfo = true;
+    // let schema = new passwordValidator()
+    //     .is().min(8)                                    // Minimum length 8
+    //     .is().max(15)                                  // Maximum length 15
+    //     .has().uppercase(1)                              // Must have at least one uppercase letter
+    //     .has().lowercase(1)                              // Must have at least one lowercase letter
+    //     .has().digits(1)                              // Must have at least 1 number
+    //     .has().symbols(1)                               // Must have at least one symbol
+    //     .has().not().spaces();                         // Should not have spaces
+    // if (emailValidator.validate(req.body.email)) {
+    //     console.log(emailValidator.validate(req.body.email))
+    // }
+    // if (schema.validate(req.body.password) && emailValidator.validate(req.body.email) === true) {
+    //     validInfo = true
+    // }
     if (validInfo) {
         bcrypt.hash(req.body.password, 10).then((hash) => {
             const user = {

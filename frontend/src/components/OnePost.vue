@@ -37,7 +37,7 @@ export default {
             }
         },
         getImage() {
-            return `/backend/images/${post.image}`
+            return `/backend/images/${this.post.image}`
         },
         getPost() {
             let id = window.location.href.split('/').pop()

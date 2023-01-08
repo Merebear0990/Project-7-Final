@@ -92,7 +92,7 @@ export default {
                 .then((res) => {
                     return res.json()
                     .then((data) => {
-                        if (res.ok) {
+                        if (data.ok) {
                             this.$router.push("/home");
                             alert('post created successfully')
                         }

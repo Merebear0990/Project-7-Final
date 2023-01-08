@@ -28,7 +28,7 @@ export default {
     
     methods: {
         getImage() {
-            return `/backend/images/${post.image}`
+            return `/backend/images/${this.post.image}`
         },
         fetchPosts() {
             const requestOptions = {

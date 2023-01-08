@@ -89,13 +89,13 @@
             })
             .then((data) => {
               console.log(data);
-              if (response.ok) {
+              if (data.ok) {
                 // localStorage.setItem('token', res.data.token);
                 this.$router.push("/");
               }
             })
             .catch((error) => {
-              error: error;
+              console.error("There was an error!", error);
             })
           }
         }
