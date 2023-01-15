@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <div class="home_page_img">
-            <img id="logo" alt="groupomania logo" src="../assets/icons/icon-left-font-monochrome-black.svg" />
+            <img id="logo" alt="groupomania logo" src="../assets/icons/icon-left-font-monochrome-white.png" />
         </div>
         <div class="login_section">
             <div class="col-md-4" id="login_card">
@@ -81,7 +81,7 @@ export default {
     flex-wrap: wrap;
     width: 100vw;
     height: 100vh;
-    background-color: lightgrey;
+    background-color: #364577;
 }
 
 .home_page_img {
@@ -167,6 +167,7 @@ input {
     .home {
         justify-content: center;
         flex-direction: column;
+        background-color: #364577;
     }
 
     #logo {

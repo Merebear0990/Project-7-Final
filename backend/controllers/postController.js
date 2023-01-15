@@ -17,21 +17,7 @@ exports.getAllPosts = (req, res, next) => {
   })
 }
 
-// get ALL posts by USERID
-exports.getAllPostsByUser = (req, res, next) => {
-  const id = req.params.id;
-  pool.query(`SELECT * FROM "posts" WHERE userId = $1`,
-  [id],
-  (error, posts) => {
-    if (error) {
-      return res.status(400).json({
-      error: error
-      });
-    }
-    console.log(posts.rows)
-    return res.status(200).json(posts.rows)
-  })
-}
+
 
 // Mark readby
 exports.setReadby = (req, res, next) => {
@@ -143,73 +129,4 @@ exports.getOnePost = (req, res, next) => {
       return res.status(201).json(post.rows);
     }
   )
-}
-
-
-// MODIFY POST -- for after p7 pass off
-// exports.modifyPost = (req, res, next) => {
-//   const id = req.params.id;
-
-//   pool.query(`SELECT * FROM "posts" WHERE postid = $1`,
-//   [id],
-//   (error) => {
-//     if (error) {
-//       res.status(401).json({
-//       error: error,
-//       });
-//     } 
-//     console.log(req.body)
-//     if (id === null) {
-//       console.log('Post does not exist')
-//       res.status(401).json('Post does not exist')
-//     } else {
-//         const modifiedPost = {
-//           title: req.body.title,
-//           author: req.body.author,
-//           postText: req.body.postText,
-//           userId: id
-//         }
-//         console.log(req.body)
-//         pool.query(`UPDATE "posts" SET title = $2, author = $3, postText = $4, userId = $5 WHERE postid = $1`,
-//           [id, modifiedPost.title, modifiedPost.author, modifiedPost.postText, id],
-//           error => {
-//             if (error) {
-//               throw error
-//             }
-//           }        
-//         )
-//       }
-//       console.log('Post updated successfully')
-//       // res.status(201).json('Post updated successfully')
-//     } 
-//   )
-// }
-
-// DELETE POST
-exports.deletePost = (req, res, next) => {
-  const id = req.params.id;
-
-  pool.query(`SELECT * FROM "posts" WHERE postid = $1`,
-  [id],
-  (error) => {
-    if (error) {
-      throw error
-    }
-    pool.query(`SELECT * FROM "comments" WHERE postid = $1`,
-    [id],
-    (error) => {
-      if (error) {
-        throw error
-      }
-      pool.query(`DELETE FROM "posts" WHERE postid = $1`, 
-      [id],
-      (error) => {
-        if (error) {
-          throw error
-        }
-        console.log('Post deleted successfully')
-        res.status(201).json('Post deleted sucessfully')
-      })
-    })
-  })
 }
