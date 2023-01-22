@@ -16,11 +16,18 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false
+
+    },
     password: DataTypes.STRING
+
   }, {
     sequelize,
     modelName: 'User',
   });
   return User;
 };
+// TODOAdd sequilize unique constraint to email

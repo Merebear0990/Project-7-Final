@@ -1,47 +1,38 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const pool = require('../models/pool');
+const pool = require('./pool');
+const { User } = require('../models')
 
 const emailValidator = require('email-validator');
 
 // SIGNUP
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10).then((hash) => {
-        const user = {
+        //TODOCheck first to see is user with email already exsist
+        const user = new User({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
             password: hash,
-        };
+        });
         console.log(user);
+        user.save().then(
+            () => {
+                res.status(201).json({
+                    message: 'User was added successfully!'
 
-        pool.query(`SELECT * FROM "users" WHERE email = $1`, [req.body.email],
-            (error, userFound) => {
-                if (error) {
-                    console.log(error)
-                    return res.status(401).json({
+                })
+            }).catch(
+                (error) => {
+                    res.status(500).json({
                         error: error
                     });
                 }
-                if (userFound.rowCount != 0) {
-                    console.log('Email already registered');
-                    return res.status(401).json('Already registered');
-                } else {
-                    pool.query(`INSERT INTO "users"(firstName, lastName, email, password) VALUES ($1, $2, $3, $4) RETURNING *`,
-                        [user.firstName, user.lastName, user.email, user.password],
-                        (error) => {
-                            if (error) {
-                                console.log(error)
-                                throw error
-                            }
-                            console.log('User has been registered')
-                            return res.status(201).json('User registered successfully!')
-                        })
-                }
-            });
-    }
-    )
-};
+            );
+    });
+}
+
+
 
 // LOGIN
 exports.login = (req, res, next) => {
