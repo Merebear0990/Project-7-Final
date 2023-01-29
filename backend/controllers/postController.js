@@ -5,7 +5,11 @@ const pool = require('./pool');
 
 // get ALL posts
 exports.getAllPosts = (req, res, next) => {
-  pool.query(`SELECT * FROM "posts" ORDER BY creationDate DESC`,
+  Post.getAllPosts({
+    where: {
+      userId: userId
+    }
+  });
   (error, posts) => {
     if (error) {
       return res.status(400).json({
@@ -14,7 +18,7 @@ exports.getAllPosts = (req, res, next) => {
     }
     console.log(posts.rows)
     return res.status(200).json(posts.rows)
-  })
+  }
 }
 
 
