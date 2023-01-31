@@ -9,7 +9,7 @@
           <label for="email-input" class="form-label"></label>
           <input type="text" class="form-control" id="email" placeholder="Email" v-model="email" required />
           <label for="password-input" class="form-label"></label>
-          <input type="text" class="form-control" id="password" placeholder="Password" v-model="password" required />
+          <input type="password" class="form-control" id="password" placeholder="Password" v-model="password" required />
         </form>
         <router-link to="/home">
           <button type="submit" v-on:click.prevent="LogIn()" id="login_btn">Log In</button>
