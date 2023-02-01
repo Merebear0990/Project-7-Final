@@ -72,7 +72,7 @@ exports.deleteUser = (req, res, next) => {
     }).then(() => {
 
         console.log('User deleted successfully')
-        res.status(201).json('User deleted sucessfully')
+        res.status(200).json('User deleted sucessfully')
     })
 
 
