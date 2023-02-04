@@ -19,39 +19,17 @@ exports.getAllPosts = (req, res, next) => {
 
 
 // Mark readby
-exports.setReadby = (req, res, next) => {
-  pool.query(`SELECT * FROM users WHERE userid = $1`,
-    [req.auth.userId],
-    (error) => {
-      if (error) {
-        return res.status(401).json({
-          error: error,
-        });
-      }
-
-      pool.query(`SELECT * FROM "posts" WHERE postid = $1`,
-        [req.params.id],
-        (error, post) => {
-          if (error) {
-            res.status(401).json({
-              error: error,
-            });
-          }
-          const findReadBy = post.rows[0].readby.includes(req.auth.userId);
-          if (findReadBy == false) {
-            pool.query(`UPDATE "posts" SET readby = ARRAY_APPEND (readby, $1) WHERE postid = $2`,
-              [req.auth.userId, req.params.id],
-              error => {
-                if (error) {
-                  throw error
-                }
-              })
-            console.log('post has been read')
-            return res.status(200).json(post)
-          }
-        })
-    })
+exports.setReadby = async(req, res, next) => {
+  views = [...views, userId]
+    console.log(views)
+    await Post.update({ views })
+    await Post.save(); res.status(200).send({ success: "OK" });
+  console.log('post has been read')
+  return res.status(200).json(Post)
 }
+
+
+
 
 // CREATE POST
 exports.addPost = (req, res, next) => {
