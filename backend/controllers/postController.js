@@ -67,14 +67,14 @@ exports.addPost = (req, res, next) => {
       })
   } else {
     // no image upload
-    Post.create = ({
+    Post.create ({
       message: req.body.message,
       userId: req.auth.userId
 
     }).then(
       () => res.status(201).json({ message: 'Post saved successfully' })
     ).catch(
-      error => res.status(500).json({ error: errors.message || error })
+      error => res.status(500).json({ error: error.message || error })
     )
   }
 }
