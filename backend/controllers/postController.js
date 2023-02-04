@@ -18,11 +18,11 @@ exports.getAllPosts = (req, res, next) => {
 
 
 // Mark readby
-exports.setReadby = async(req, res, next) => {
+exports.setReadby = async (req, res, next) => {
   views = [...views, userId]
-    console.log(views)
-    await Post.update({views})
-    await Post.save(); res.status(200).send({ success: "OK" });
+  console.log(views)
+  await Post.update({ views })
+  await Post.save(); res.status(200).send({ success: "OK" });
   console.log('post has been read')
   return res.status(200).json(Post)
 }
@@ -67,24 +67,14 @@ exports.addPost = (req, res, next) => {
       })
   } else {
     // no image upload
-    post = {
-      author: req.body.author,
+    Post.create = ({
       message: req.body.message,
       userId: req.auth.userId
-    }
-    console.log('Jalepeno')
 
-    pool.query(`INSERT INTO "posts"(title, author, posttext, userid) VALUES ($1, $2, $3, $4)`,
-      [post.title, post.author, post.postText, req.auth.userId],
-      error => {
-        if (error) {
-          return res.status(401).json({
-            error: error
-          })
-        }
-        console.log('Post saved successfully')
-        return res.status(201).json(post);
-      }
+    }).then(
+      () => res.status(201).json({ message: 'Post saved successfully' })
+    ).catch(
+      error => res.status(500).json({ error: errors.message || error })
     )
   }
 }
