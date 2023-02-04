@@ -1,6 +1,5 @@
 const express = require('express'); // imports framework
 const path = require('path');
-const dotenv = require('dotenv');
 const cors = require('cors');  
 const helmet = require('helmet'); 
 const bodyParser = require('body-parser');
@@ -8,7 +7,6 @@ const bodyParser = require('body-parser');
 const postRoutes = require('./routes/postRoutes');
 const userRoutes = require('./routes/userRoutes');
 
-dotenv.config();
 const app = express();
 
 app.use(express.json());

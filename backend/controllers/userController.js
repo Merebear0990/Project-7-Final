@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const pool = require('./pool');
 const { User } = require('../models')
 
 const emailValidator = require('email-validator');
