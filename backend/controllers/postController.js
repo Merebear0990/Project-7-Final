@@ -1,5 +1,4 @@
 const fs = require('fs');
-const pool = require('./pool');
 const { Post } = require('../models');
 
 
@@ -22,7 +21,7 @@ exports.getAllPosts = (req, res, next) => {
 exports.setReadby = async(req, res, next) => {
   views = [...views, userId]
     console.log(views)
-    await Post.update({ views })
+    await Post.update({views})
     await Post.save(); res.status(200).send({ success: "OK" });
   console.log('post has been read')
   return res.status(200).json(Post)
@@ -39,9 +38,8 @@ exports.addPost = (req, res, next) => {
     req.body.post = JSON.parse(req.body.post);
     const url = req.protocol + '://' + req.get('host')
     post = {
-      title: req.body.post.title,
-      author: req.body.post.author,
-      postText: req.body.post.postText,
+      userId: req.body.post.userId,
+      message: req.body.post.message,
       image: url + '/images/' + req.file.filename,
       userId: req.auth.userId
     }
@@ -70,9 +68,8 @@ exports.addPost = (req, res, next) => {
   } else {
     // no image upload
     post = {
-      title: req.body.title,
       author: req.body.author,
-      postText: req.body.postText,
+      message: req.body.message,
       userId: req.auth.userId
     }
     console.log('Jalepeno')
