@@ -14,15 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Post.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false
-
-    },
-    password: DataTypes.STRING
+  message: {type: DataTypes.STRING,allowNull: false},
+  mediaUrl: DataTypes.STRING,
+  userId: { type: DataTypes.INTEGER, allowNull: false},
+  readBy: DataTypes.ARRAY(DataTypes.INTEGER)
 
   }, {
     sequelize,
