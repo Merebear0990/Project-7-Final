@@ -1,6 +1,9 @@
 const multer = require('multer'); // handles incoming files
 
 const MIME_TYPES = {
+    'audio/mp3': 'mp3',
+    'audio/mpeg': 'mp3',
+    'video/mp4': 'mp4',
     'image/jpg': 'jpg',
     'image/jpeg': 'jpg',
     'image/png': 'png'
