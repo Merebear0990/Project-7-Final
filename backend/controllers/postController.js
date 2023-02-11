@@ -28,8 +28,8 @@ exports.setReadby = async (req, res, next) => {
 
   }).then(post => {
     if (!post.readBy.includes(req.body.userId)) {
-      post.readBy.push(req.body.userId)
-
+      // post.readBy.push(req.body.userId)
+      post.readBy = [...post.readBy, req.body.userId];
     }
     post.save().then(() => res.status(201).json({ message: 'Post saved Successfully' }))
 
