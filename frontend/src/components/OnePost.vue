@@ -23,15 +23,15 @@ export default {
       }
     },
     created() {
-      this.getPost()
+      this.getAllPosts()
     },
     mounted() {
         this.readCheck()
     },
     methods: {   
         readCheck() {
-            if (this.post.readby != null) {
-                const check = this.post.readby.includes(JSON.parse(localStorage.getItem("user")).userId);
+            if (this.post.readBy != null) {
+                const check = this.post.readBy.includes(JSON.parse(localStorage.getItem("user")).userId);
                 console.log(check)
                 return !check
             }
@@ -39,7 +39,7 @@ export default {
         getImage() {
             return `/backend/images/${this.post.image}`
         },
-        getPost() {
+        getAllPosts() {
             let id = window.location.href.split('/').pop()
             const requestOptions = {
               method: "GET",
@@ -67,7 +67,7 @@ export default {
             console.log(id)
             if (JSON.parse(localStorage.getItem("user")).userid === this.userid) {
                 setReadby = {
-                    readby: userId,
+                    readBy: userId,
                     postId: id
                 }
             

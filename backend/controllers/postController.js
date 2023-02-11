@@ -28,7 +28,6 @@ exports.setReadby = async (req, res, next) => {
 
   }).then(post => {
     if (!post.readBy.includes(req.body.userId)) {
-      // post.readBy.push(req.body.userId)
       post.readBy = [...post.readBy, req.body.userId];
     }
     post.save().then(() => res.status(201).json({ message: 'Post saved Successfully' }))
@@ -38,20 +37,6 @@ exports.setReadby = async (req, res, next) => {
   )
 
 }
-
-//TODO save the changes with sequilize
-//TODO add a catch for errors
-
-// views = [...views, userId]
-// console.log(views)
-// await Post.update({ views })
-// await Post.save(); res.status(200).send({ success: "OK" });
-// console.log('post has been read')
-// return res.status(200).json(Post)
-
-
-
-
 
 // CREATE POST
 exports.addPost = (req, res, next) => {
