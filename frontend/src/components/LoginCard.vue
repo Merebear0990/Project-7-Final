@@ -9,7 +9,8 @@
           <label for="email-input" class="form-label"></label>
           <input type="text" class="form-control" id="email" placeholder="Email" v-model="email" required />
           <label for="password-input" class="form-label"></label>
-          <input type="password" class="form-control" id="password" placeholder="Password" v-model="password" required />
+          <input type="password" class="form-control" id="password" placeholder="Password" v-model="password"
+            required />
         </form>
         <router-link to="/home">
           <button type="submit" v-on:click.prevent="LogIn()" id="login_btn">Log In</button>
@@ -79,13 +80,13 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100vw;
-  height: 100vh;
+  height: 67vh;
   background-color: rgb(198, 194, 194);
 }
 
 .home_page_img {
-  display: inline-block;
-  justify-content: start;
+  display: flex;
+  justify-content: center;
   height: 8rem;
   width: 33%;
   margin: 10rem 0 0 16.5rem;
@@ -95,9 +96,8 @@ export default {
 #logo {
   margin: 100px;
   height: 5rem;
-  background-color: rgb(9, 48, 117);
   opacity: 0.6;
-  border: 1px solid black;
+  
 
 }
 

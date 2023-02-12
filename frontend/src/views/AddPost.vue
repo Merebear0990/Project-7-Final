@@ -7,12 +7,13 @@
         <div class="col-md-4">
             <h2 class="addPost_header"><strong>Create a Post</strong></h2>
             <form class="addpost_form">
-                <label for="firstName-input" class="form-label"></label>
+                <!-- <label for="firstName-input" class="form-label"></label>
                   <input type="text" class="form-control" id="author" placeholder="Name" maxlength="15" v-model="author" required />
                 <label for="title-input" class="form-label"></label>
-                  <input type="text" class="form-control" id="title" placeholder="Title" minlength="3" v-model="title" required />
+                  <input type="text" class="form-control" id="title" placeholder="Title" minlength="3" v-model="title" required /> -->
                 <label for="postText-input" class="form-label"></label>
-                  <input type="text" class="form-control" id="postText" placeholder="Write post" minlength="25" v-model="postText" required />
+                <input type="text" class="form-control" id="postText" placeholder="Write post" minlength="25"
+                    v-model="message" required />
                 <div id="file">
                     <input type="file" accept="image/*" ref="file" @change="getImage" />
                 </div>
@@ -30,10 +31,8 @@ import HeaderLogo from '../components/HeaderLogo.vue';
 export default {
     data() {
         return {
-            title: "",
-            author: "",
-            postText: "",
-            image: "",
+            message: "",
+            mediaUrl: "",
             file: "",
             fileSource: "",
         };
@@ -52,11 +51,10 @@ export default {
             let requestOptions = {};
             let post = {};
 
-            if (this.file != null) {
+            if (this.file) {
                 post = JSON.stringify({
-                    title: this.title,
-                    author: this.author,
-                    postText: this.postText,
+                    message: this.message,
+                    userId: JSON.parse(localStorage.getItem("user")).userId
                 });
 
                 formData = new FormData();
@@ -73,9 +71,8 @@ export default {
                 }
             } else {
                 formData = {
-                    title: this.title,
-                    author: this.author,
-                    postText: this.postText
+                    message: this.message,
+                    userId: JSON.parse(localStorage.getItem("user")).userId
                 };
 
                 requestOptions = {
@@ -87,20 +84,19 @@ export default {
                     body: JSON.stringify(formData),
                 };
             }
-            if (this.title && this.author && this.postText != null) {
+
+            if (this.message) {
                 fetch("http://localhost:3000/api/posts/", requestOptions)
-                .then((res) => {
-                    return res.json()
-                    .then((data) => {
-                        if (data.ok) {
-                            this.$router.push("/home");
-                            alert('post created successfully')
-                        }
+                    .then (() => {
+                        this.message = "";
+                        this.mediaUrl = "";
+                        this.file = "";
+                        this.fileSource = "";
+                        alert('post created successfully');
+                    })
+                    .catch((error) => {
+                        console.error('There was an error!', error);
                     });
-                })
-                .catch((error) => {
-                    console.error('There was an error!', error);
-                });
             }
         }
 
@@ -118,7 +114,8 @@ export default {
     margin: 0;
 }
 
-label, input {
+label,
+input {
     padding: .5rem;
 }
 </style>

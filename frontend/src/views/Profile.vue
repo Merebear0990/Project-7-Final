@@ -5,7 +5,7 @@
     </RouterLink>
     <button class="btn btn-primary btn-lg" id="delete_account_btn" v-on:click.prevent="deleteAccount()"
         role="button"><strong>Delete Account</strong></button>
-    <div class="posts">
+    <!-- <div class="posts">
         <div v-for="post in posts" :key="post.userid" class="card">
             <div class="card-body">
                 <h4 class="card-title"><strong>{{ post.title }}</strong></h4>
@@ -17,7 +17,7 @@
                 <p class="card-subtitle text-muted">{{ post.creationdate }}</p>
             </div>
         </div>
-    </div>
+    </div> -->
     <RouterView />
 </template>
 
@@ -30,9 +30,9 @@ export default {
             posts: []
         }
     },
-    created() {
-        this.getPosts()
-    },
+    // created() {
+    //    this.getPosts()
+    // },
 
     methods: {
         getPosts() {
@@ -109,6 +109,7 @@ export default {
     margin-bottom: 2rem;
     width: 50%;
 }
+
 .card-body {
     background: linear-gradient(to bottom right, #9ea5f4, #fff);
     box-shadow: 6px 6px 3px rgba(65, 64, 64, 0.867);
@@ -121,6 +122,7 @@ img {
     width: 100%;
     margin-bottom: 1rem;
 }
+
 @media screen and (max-width: 768px) {
     #home_btn {
         margin: 1rem 0 2rem 3rem;
@@ -131,6 +133,7 @@ img {
         margin: 1rem 0 2rem 1rem;
         font-size: 16px;
     }
+
     .card {
         display: flex;
         justify-content: center;
@@ -139,5 +142,4 @@ img {
         box-shadow: none;
     }
 }
-
 </style>

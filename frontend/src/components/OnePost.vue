@@ -5,11 +5,11 @@
             <i v-if="readCheck()" class="fas fa-envelope" type = "submit" id="unread" v-on:click ="addReadby()"></i>
             <h4 class="card-title"><strong>{{ post.title }}</strong></h4>
             <h5 class="card-subtitle mb-4 text-strong">posted by {{ post.author }}</h5>
-            <p class="card-text mb-4">{{ post.posttext }}</p>
+            <p class="card-text mb-4">{{ post.message}}</p>
                 <div class="card-img">
-                  <img v-bind:src="post.image"/>
+                  <img v-bind:src="post.mediaUrl"/>
                 </div>
-            <p class="card-subtitle text-muted">{{ post.creationdate }}</p>
+            <p class="card-subtitle text-muted">{{ post.createdAt }}</p>
         </div>
       </div>  
     </div>

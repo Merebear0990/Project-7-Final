@@ -1,13 +1,13 @@
 <template>
     <div v-for="post in posts" :key="post.postid" class="card">
         <div class="card-body">
-            <RouterLink :to="{ path: '/' + post.postid }">
+          <!--  <RouterLink :to="{ path: '/' + post.postid }">
                 <h4 class="card-title"><strong>{{ post.title }}</strong></h4>
-            </RouterLink>
-                <h5 class="card-subtitle mb-4 text-strong">posted by {{ post.author }}</h5>
-                <p class="card-text mb-4">{{ post.posttext }}</p>
+            </RouterLink> -->
+               <!-- <h5 class="card-subtitle mb-4 text-strong">posted by {{ post.author }}</h5> -->
+                <p class="card-text mb-4">{{ post.message }}</p>
                     <div class="card-img">
-                        <img v-bind:src="post.image" />
+                        <img v-bind:src="post.mediaUrl" />
                     </div>
                 <p class="card-subtitle text-muted">{{ post.creationdate }}</p>
         </div>
@@ -23,6 +23,7 @@ export default {
         }
     },
     created() {
+        console.log("created");
         this.fetchPosts()
     },
     

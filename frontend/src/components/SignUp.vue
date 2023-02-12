@@ -3,12 +3,12 @@
     <header-logo />
     <div class="col-md-4">
       <form class="signup_form">
-        <label for="firstName-input" class="form-label"></label>
+       <!-- <label for="firstName-input" class="form-label"></label>
         <input type="text" class="form-control" id="signup_firstName" placeholder="First Name" maxlength="15"
           v-model="firstName" required />
         <label for="lastName-input" class="form-label"></label>
         <input type="text" class="form-control" id="signup_lastName" placeholder="Last Name" maxlength="20"
-          v-model="lastName" required />
+          v-model="lastName" required /> -->
         <label for="email-input" class="form-label"></label>
         <input type="text" class="form-control" id="signup_email" placeholder="Email" minlength="10"
           v-on:change="emailValidation()" v-model="email" required />
@@ -30,8 +30,6 @@ export default {
   name: "SignUp",
   data() {
     return {
-      firstName: "",
-      lastName: "",
       email: "",
       password: "",
       passConditions: {
@@ -74,8 +72,6 @@ export default {
     },
     SignUp() {
       const signUpForm = {
-        firstName: this.firstName,
-        lastName: this.lastName,
         email: this.email,
         password: this.password
       }
@@ -125,6 +121,25 @@ input {
   font-weight: 500;
   font-size: medium;
 }
+.login_form {
+    margin: 1rem 1rem 0 1rem;
+  }
+
+  .login_section {
+    width: 90%;
+    margin: 1rem 0 0 1.25rem;
+  }
+
+  #login_card {
+    height: 20rem;
+    margin-bottom: 0;
+    box-shadow: none;
+  }
+
+  #login_btn {
+    margin: 1rem 0 0 1.25rem;
+    box-shadow: none;
+  }
 
 form {
   display: flex;
@@ -137,15 +152,16 @@ form {
   font-weight: bold;
   font-style: normal;
   cursor: pointer;
-  border-radius: 25px;
-  padding: .5rem;
-  width: 14rem;
-  margin: 4rem 0 0 9.7rem;
+  border-radius: 20px;
+  padding: 1rem;
+  width: 17rem;
+  margin: 2.2rem 0 0 8.5rem;
+  /*  12 for large monitor */
   font-size: 18px;
-  color: black;
+  color: navy;
   border: none;
-  box-shadow: 5px 5px 5px gray;
-  background: linear-gradient(to bottom right, #8521dd, #be5deb);
+  box-shadow: 5px 5px 5px rgb(163, 98, 98);
+  background: linear-gradient(to bottom right, #c6c6cf, #ababc2);
 }
 
 @media screen and (max-width: 768px) {

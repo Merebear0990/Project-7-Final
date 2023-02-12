@@ -1,9 +1,9 @@
 <template>
     <div class="home">
         <div class="home_page_img">
-            <img id="logo" alt="groupomania logo" src="../assets/icons/icon-left-font-monochrome-white.png" />
-        </div>
-        <div class="login_section">
+                <img id="logo" alt="groupomania logo" src="../assets/icons/icon-left-font-monochrome-white.svg" />
+            </div>
+        <!-- <div class="login_section">
             <div class="col-md-4" id="login_card">
                 <form class="login_form" id="login_form">
                     <label for="email-input" class="form-label"></label>
@@ -19,7 +19,7 @@
                     <button type="submit" id="signup_btn">Create new account</button>
                 </router-link>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
   
@@ -29,7 +29,7 @@
 export default {
     data() {
         return {
-            email: "",
+            email: "used?",
             password: ""
         };
     },
@@ -80,20 +80,25 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     width: 100vw;
-    height: 100vh;
-    background-color: #364577;
+    /*height: 67vh;*/
+    background-color: rgb(198, 194, 194);
 }
 
 .home_page_img {
-    display: inline-block;
-    justify-content: start;
-    height: 8rem;
+    display: flex;
+    justify-content: center;
+    /*height: 8rem;*/
     width: 33%;
-    margin: 21.3rem 0 0 16.5rem;
+    /*margin: 21.3rem 0 0 16.5rem;*/
 }
 
+
+
 #logo {
+    margin: 100px;
     height: 5rem;
+    opacity: 0.6;
+    
 }
 
 .login_form {
@@ -130,16 +135,18 @@ input {
 
 #login_btn {
     font-weight: bold;
-    cursor: pointer;
-    border-radius: 20px;
-    padding: 1rem;
-    width: 17rem;
-    margin: 3rem 0 0 8.5rem;
-    font-size: 18px;
-    color: black;
-    border: none;
-    box-shadow: 5px 5px 5px gray;
-    background: linear-gradient(to bottom right, #9E9CE2, #2e27e4);
+  font-style: normal;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 1rem;
+  width: 17rem;
+  margin: 2.2rem 0 0 8.5rem;
+  /*  12 for large monitor */
+  font-size: 18px;
+  color: navy;
+  border: none;
+  box-shadow: 5px 5px 5px rgb(163, 98, 98);
+  background: linear-gradient(to bottom right, #c6c6cf, #ababc2);
 }
 
 #login_btn:hover,
@@ -149,18 +156,18 @@ input {
 
 #signup_btn {
     font-weight: bold;
-    font-style: normal;
-    cursor: pointer;
-    border-radius: 20px;
-    padding: 1rem;
-    width: 17rem;
-    margin: 2.2rem 0 0 8.5rem;
-    /*  12 for large monitor */
-    font-size: 18px;
-    color: black;
-    border: none;
-    box-shadow: 5px 5px 5px gray;
-    background: linear-gradient(to bottom right, #7BDCA1, #05CD54);
+  font-style: normal;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 1rem;
+  width: 17rem;
+  margin: 2.2rem 0 0 8.5rem;
+  /*  12 for large monitor */
+  font-size: 18px;
+  color: navy;
+  border: none;
+  box-shadow: 5px 5px 5px rgb(163, 98, 98);
+  background: linear-gradient(to bottom right, #c6c6cf, #ababc2);
 }
 
 @media screen and (max-width: 768px) {
